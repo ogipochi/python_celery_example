@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+    python_app:
+        build: ./python_app
+        volumes:
+            - ./python_app/src:/src
+        tty: true
+        networks:
+            - redis_network
+    redis_app:
+        image: redis:6.0
+        networks:
+            - redis_network
+
+networks:
+    redis_network:
